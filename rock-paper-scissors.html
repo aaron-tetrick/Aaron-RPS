@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<title>Rock, Paper, Scissors
+</title>
+<meta charset="UTF-8">
+
+</head>
+<body>
+<script>
+/* GOAL: Create a game of rock, paper, scissors with the user versus the computer.
+--Begin with a function called computerPlay that will randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’. We’ll use this function in the game to make the computer’s play.
+
+
+--Write a NEW function called game(). 
+--game() will contain playRound function.
+--Play a 5 round game that keeps score and reports a winner and a loser
+
+*/
+
+
+
+
+let playerEntry = prompt('Rock, Paper, or Scissors?');
+const playerSelection = playerEntry.toUpperCase();
+const computerSelection = computerPlay();
+let playerScore = 0;
+let computerScore = 0;
+
+
+
+function computerPlay() {
+    const options = ['Rock', 'Paper', 'Scissors'];
+    let computerSelection = options[Math.floor(Math.random()*options.length)];
+    return computerSelection;
+    }
+
+
+function playRound(playerSelection, computerSelection) {
+    if (playerSelection === 'ROCK' && computerSelection === 'Scissors')  {
+        let winner = "You win! Rock beats Scissors";
+        return winner;
+    } else if (playerSelection === 'PAPER' && computerSelection === 'Scissors') {
+        let loser = "You lose! Scissors beats Paper";
+        return loser;
+    }
+    else if (playerSelection === 'PAPER' && computerSelection === 'Rock') {
+        let winner = 'You win! Paper beats rock';
+        return winner; 
+    }
+    else if (playerSelection === 'SCISSORS' && computerSelection === 'Rock') {
+        let loser = 'You lose! Rock beats Scissors';
+        return loser; 
+    } 
+     else if (playerSelection === 'ROCK' && computerSelection === 'Paper')   {
+        let loser = 'You lose! Paper beats Rock';
+        return loser;
+    }
+     else if (playerSelection === 'SCISSORS' && computerSelection === 'Paper') {
+        let winner = 'You win! Scissors beats Paper';
+        return winner;
+    }   
+     else if (playerSelection === 'ROCK' && computerSelection === 'Rock' || playerSelection === 'PAPER' && computerSelection === 'Paper' || playerSelection === 'SCISSORS' && computerSelection === 'Scissors')
+     {
+        let tie = 'It\'s a tie!';
+        return tie;
+    }
+}
+
+playRound(playerSelection, computerSelection);
+let round = playRound(playerSelection, computerSelection);
+
+
+
+
+
+/*
+Write a new function called game()
+The playRound function should be inside of the game() function
+The game() function should play a 5 round game that keeps score
+Then reports a winner or loser at the end.
+---
+I need a variable with the player's score.
+I need a variable with the computer's score.
+I need to have a different result per round.
+I need the scores of the player and the computer to change depending on the reult of the round.
+At the end of 5 rounds the player with the most points should be declared the winner.
+
+
+
+
+*/
+
+function game() {
+    if (round === "You win! Rock beats Scissors" || round === 'You win! Paper beats rock' || round === 'You win! Scissors beats Paper') {
+        playerScore++;
+        return `Player Score: ${playerScore}, Computer Score: ${computerScore}`;
+    } else if (round === "You lose! Scissors beats Paper" || round === 'You lose! Rock beats Scissors' || round === 'You lose! Paper beats Rock') {
+    computerScore++;
+    return `Player Score: ${playerScore}, Computer Score: ${computerScore}`;
+}
+     else {
+        return `Player Score: ${playerScore}, Computer Score: ${computerScore}`
+    }
+}
+
+let result = playRound(playerSelection, computerSelection) + " | " + game(); 
+
+console.log(result);
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+
+</html>
